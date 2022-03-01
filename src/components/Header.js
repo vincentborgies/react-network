@@ -1,14 +1,11 @@
-const Header = (props) => {
-  let title = 'React Network';
+import { useState } from "react";
 
-  const onClickHandler = () => {
-    console.log('Bouton cliqué');
-  };
+const Header = (props) => {
+  const title = "React Network";
 
   return (
     <>
-      <h1>{title}</h1>
-      <button onClick={onClickHandler}>Cliquez ici</button>
+      <h1 align='center'>{title}</h1>
     </>
   );
 };
