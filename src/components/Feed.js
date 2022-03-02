@@ -1,36 +1,31 @@
 import { useState } from 'react';
 import Post from './Post';
-//import emptyImage from '../images/empty.png';
-import { ReactComponent as EmptyImageSvg} from '../images/empty.svg'
+import emptyImage from '../images/empty.png';
+//import { ReactComponent as EmptyImageSvg} from '../images/empty.svg'
 
-let initialPosts = [
-  { id: 12, text: 'Bonjour tout le monde', author: 'Hugo Bordes', likes: 42 },
-  { id: 55, text: 'Bonjour tout le monde', author: 'Antoine Morin', likes: 35 },
-  { id: 90, text: 'Bonjour tout le monde', author: 'Léa Dumont', likes: 17 },
-];
-
-const Feed = (props) => {
-  const [posts, setPosts] = useState(initialPosts);
-
-  const deletePost = (id) => {
-    setPosts(posts.filter((p) => p.id != id));
-  };
-
-  return (
+const Feed = ({ posts, deletePost }) => {
+  posts.sort((post1, post2) => post2.date.getTime() - post1.date.getTime());
+  const contentPosts = (
     <>
-      {/*<h3>Fil d'actualité :</h3>
+      <h3>Fil d'actualité :</h3>
       {posts.map((p) => (
         <Post key={p.id} postData={p} deletePost={deletePost} />
-      ))}*/}
-
-      <h3 align="center">
-        {' '}
-        {/*<img src={EmptyImage} width="6000" height="6000"/>*/}
-        <EmptyImageSvg width="6000" height="6000"/>
-        Aucun post pour le moment
-      </h3>²
+      ))}
     </>
   );
+
+  const contentEmpty = (
+    <>
+      <h3 align='center'>
+        {' '}
+        {/*<img src={EmptyImage} width="6000" height="6000"/>*/}
+        <img alt='empty' src={emptyImage} width='300' height='300' /> <br />
+        Aucun post pour le moment
+      </h3>
+    </>
+  );
+
+  return posts.length > 0 ? contentPosts : contentEmpty;
 };
 
 export default Feed;

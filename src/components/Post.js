@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import moment from 'moment';
 
-const Post = (props) => {
-  const [nbLikes, setNbLikes] = useState(props.postData.likes);
+const Post = ({ postData, deletePost }) => {
+  const [nbLikes, setNbLikes] = useState(postData.likes);
   const [isLiked, setIsLiked] = useState(false);
 
   const likePost = () => {
@@ -10,18 +11,24 @@ const Post = (props) => {
     setIsLiked(!isLiked);
   };
 
+  console.log('postData', postData);
+
   return (
-    <>
-      <p>
-        {props.postData.author} <br /> 💬{props.postData.text} <br />
-        {nbLikes} likes <br />
-        <button onClick={likePost}>
-          {isLiked ? 'Vous aimez ce post' : "J'aime"}
-        </button>
-        <button onClick={() => props.deletePost(props.postData.id)}>supprimer le post</button>
-        <br />
-      </p>
-    </>
+    <p>
+      <img src={postData.authorPicture} />
+      <br />
+      {postData.author} <br />
+      {moment(postData.date).format('HH:mm')}
+      <br />
+      💬{postData.text} <br />
+      <img src={postData.postPicture} /> <br />
+      {nbLikes} likes <br />
+      <button onClick={likePost}>
+        {isLiked ? 'Vous aimez ce post' : "J'aime"}
+      </button>
+      <button onClick={() => deletePost(postData.id)}>supprimer le post</button>
+      <br />
+    </p>
   );
 };
 
