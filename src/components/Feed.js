@@ -1,15 +1,20 @@
-import { useState } from 'react';
 import Post from './Post';
 import emptyImage from '../images/empty.png';
 //import { ReactComponent as EmptyImageSvg} from '../images/empty.svg'
 
-const Feed = ({ posts, deletePost }) => {
+const Feed = ({ posts, deletePost, likePost, isLoading }) => {
   posts.sort((post1, post2) => post2.date.getTime() - post1.date.getTime());
+
+  const loading = <div>Chargement...</div>;
   const contentPosts = (
     <>
-      <h3>Fil d'actualité :</h3>
       {posts.map((p) => (
-        <Post key={p.id} postData={p} deletePost={deletePost} />
+        <Post
+          key={p.id}
+          postData={p}
+          deletePost={deletePost}
+          likePost={likePost}
+        />
       ))}
     </>
   );
@@ -25,7 +30,7 @@ const Feed = ({ posts, deletePost }) => {
     </>
   );
 
-  return posts.length > 0 ? contentPosts : contentEmpty;
+  return isLoading ? loading : (posts.length > 0 ? contentPosts : contentEmpty);
 };
 
 export default Feed;

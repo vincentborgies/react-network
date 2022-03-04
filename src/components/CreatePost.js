@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const CreatePost = ({ addPost }) => {
   const [postText, setPostText] = useState('');
@@ -12,20 +12,40 @@ const CreatePost = ({ addPost }) => {
     setPostPicture(event.target.value);
   };
 
-
   const createPostHandler = (event) => {
     addPost(postText, postPicture);
-    setPostText('')
-    setPostPicture('')
+    setPostText('');
+    setPostPicture('');
   };
 
   return (
-    <>
-      <div> Nouveau post</div>
-      Texte : <input type="text" onChange={onPostTextChangeHandler} value={postText}/> <br/>
-      Image : <input type="text" onChange={onPostPictureChangeHandler} value={postPicture}/>
-      {postText.trim() != '' && <button onClick={createPostHandler}>Publier</button>}
-    </>
+    <div className='post'>
+      <div className='createpost-row'>
+        <div>Text :</div>
+        <input
+          type='text'
+          onChange={onPostTextChangeHandler}
+          value={postText}
+          placeholder="Quoi de neuf aujourd'hui ?"
+        />
+      </div>
+      <div className='createpost-row'>
+        <div>Photo :</div>
+        <input
+          type='text'
+          onChange={onPostPictureChangeHandler}
+          value={postPicture}
+          placeholder='URL de la photo'
+        />
+      </div>
+      {postText.trim() !== '' && (
+        <div className='createpost-row'>
+          <button className='btn' onClick={createPostHandler}>
+            Publier
+          </button>
+        </div>
+      )}
+    </div>
   );
 };
 

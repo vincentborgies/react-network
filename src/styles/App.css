@@ -1,0 +1,166 @@
+* {
+  box_sizing: border-box;
+}
+
+html {
+  --main-color: #9082E7;
+}
+
+body {
+  margin: 0;
+  padding: 0px;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  margin: 0;
+  text-align: center
+}
+
+.post {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+  margin: 0px auto 25px auto;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+
+.post-header_left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.post-profilepic {
+  border-radius: 50%;
+  margin-right: 10px;
+  width: 35px;
+  height: 35px;
+}
+
+.post-author {
+  font-weight: 700;
+}
+.post-time {
+  font-size: 0.8em;
+  color: #555;
+  font-weight: 400;
+}
+
+.post-text {
+  margin-bottom: 1.5em;
+}
+
+.post-picture {
+  margin-bottom: 1.5em;
+}
+
+.post-picture img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.post-likes {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.post-likes.liked {
+  background: var(--main-color);
+  color: white;
+}
+
+.post-thumb {
+  margin-right: 5px;
+}
+
+.post-menu {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.post-popup {
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.16);
+  padding: 10px;
+}
+
+.post-popup.hidden {
+  display: none;
+}
+
+.center500px {
+  max-width: 500px;
+  margin: 0px auto;
+  padding: 100px 10px
+}
+
+.header {
+  background-color: var(--main-color);
+  padding: 25px;
+  color: white;
+  position: fixed;
+  width: 100%;
+}
+
+.header h1 {
+  font-size: 20px;
+}
+
+.createpost-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.createpost-row:last-child {
+  margin-bottom: 0px;
+}
+
+.createpost-row input[type='text'] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 0px;
+  background-color: #eee;
+  margin-left: 10px;
+}
+
+.createpost-row input[type="text"]:focus{
+    outline: none;
+}
+
+.btn{
+    width:100%;
+    font-size: 16px;
+    padding: 10px;
+    border-radius:8px;
+    border: 0px;
+    background: var(--main-color);
+    color: white;
+    cursor: pointer
+}
+
+.btn:hover{
+    opacity: 0.8;
+}
+
+.btn:active{
+    opacity: 0.5;
+}
+
+.btn:focus{
+    outline:none;
+}
+
